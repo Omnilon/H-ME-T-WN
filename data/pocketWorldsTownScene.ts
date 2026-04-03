@@ -8,6 +8,16 @@ export type PocketWorldsDistrict = {
   scale: number;
 };
 
+export type SocialSpot = {
+  name: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  district: string;
+  type: string;
+};
+
 export const backgroundImageVariants = {
   verdant: './assets/pocket-worlds/pocket-worlds-town-verdant.png',
   autumn: './assets/pocket-worlds/pocket-worlds-town-autumn.png',
@@ -45,6 +55,11 @@ export const tilesetpxh = 1024;
 export const backgroundImageUrl = backgroundImageVariants.verdant;
 
 export const districts: PocketWorldsDistrict[] = layout.districts as PocketWorldsDistrict[];
+
+// Social spots are open gathering areas (plazas, parks, docks, viewpoints).
+// They are NOT collision blockers — residents can walk through them.
+// They are exported so conversation targeting can prefer these locations.
+export const socialSpots: SocialSpot[] = (layout.socialSpots ?? []) as SocialSpot[];
 
 function createLayer(fill = -1) {
   return Array.from({ length: mapwidth }, () => Array.from({ length: mapheight }, () => fill));
@@ -94,25 +109,30 @@ function fillEllipse(
 const emptyBackground = createLayer(-1);
 const collisionLayer = createLayer(-1);
 
+// Step 1: Block water
 for (const ellipse of layout.waterEllipses as EllipseShape[]) {
   fillEllipse(collisionLayer, ellipse.cx, ellipse.cy, ellipse.rx, ellipse.ry);
 }
-
 for (const rect of layout.waterRects as RectShape[]) {
   fillRect(collisionLayer, rect.x, rect.y, rect.width, rect.height);
 }
 
+// Step 2: Punch through walkways and bridges (these override water blockers)
 for (const rect of layout.walkwayRects as RectShape[]) {
   clearRect(collisionLayer, rect.x, rect.y, rect.width, rect.height);
 }
 
+// Step 3: Block building bases
 for (const rect of layout.buildingRects as RectShape[]) {
   fillRect(collisionLayer, rect.x, rect.y, rect.width, rect.height);
 }
 
+// Step 4: Any hand-authored extra blockers
 for (const rect of layout.manualCollisionRects as RectShape[]) {
   fillRect(collisionLayer, rect.x, rect.y, rect.width, rect.height);
 }
+
+// Social spots are NOT added to the collision layer — they stay walkable.
 
 export const bgtiles = [emptyBackground];
 export const objmap: number[][][] = [];

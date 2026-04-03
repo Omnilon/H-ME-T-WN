@@ -229,14 +229,24 @@ function buildManualCollisionLayer() {
   };
 }
 
-function buildEntranceLayer() {
+function buildSocialSpotsLayer() {
+  const spots = layout.socialSpots ?? [];
   return {
     color: '#c084fc',
     draworder: 'topdown',
     id: 7,
-    name: 'Entrances And Social Spots',
-    objects: [],
-    opacity: 0.9,
+    name: 'Social Spots (Walkable)',
+    objects: spots.map((shape) =>
+      makeRectObject({
+        ...shape,
+        objectType: 'social_spot',
+        extraProperties: [
+          property('district', 'string', shape.district ?? ''),
+          property('spotType', 'string', shape.type ?? ''),
+        ],
+      }),
+    ),
+    opacity: 0.7,
     type: 'objectgroup',
     visible: true,
     x: 0,
@@ -271,7 +281,7 @@ function buildMapDocument() {
       buildBuildingLayer(),
       buildBridgeLayer(),
       buildManualCollisionLayer(),
-      buildEntranceLayer(),
+      buildSocialSpotsLayer(),
       buildNotesLayer(),
     ],
     nextlayerid: 9,

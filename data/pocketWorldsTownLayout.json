@@ -3,326 +3,506 @@
   "runtimeHeight": 64,
   "tileSize": 32,
   "referenceScale": 2,
+  "_notes": "All tile coords are runtime (96x64). Pixel = tile * 32. Buildings are base footprints only — roof art overhangs but collision stays at the ground floor. Roads are clearRect gaps, so they must NOT appear in buildingRects or waterRects.",
+
   "districts": [
     {
-      "id": "meadow-homes",
+      "id": "northside-homes",
       "label": "Northside Homes",
-      "description": "Starter houses, school routes, and the quieter residential blocks.",
-      "center": {
-        "x": 18,
-        "y": 16
-      },
+      "description": "Quiet residential blocks — starter houses, school routes, front porches.",
+      "center": { "x": 18, "y": 14 },
       "scale": 1.45
     },
     {
-      "id": "old-square",
+      "id": "civic-center",
       "label": "Civic Center",
       "description": "Apartments, cafes, and the civic plaza where elections and public drama collide.",
-      "center": {
-        "x": 47,
-        "y": 22
-      },
-      "scale": 2.15
+      "center": { "x": 46, "y": 20 },
+      "scale": 2.1
     },
     {
-      "id": "river-walk",
+      "id": "canal-row",
       "label": "Canal Row",
       "description": "Waterside homes, footbridges, and the eastern commuter crossings.",
-      "center": {
-        "x": 79,
-        "y": 18
-      },
+      "center": { "x": 66, "y": 13 },
       "scale": 1.6
     },
     {
-      "id": "south-bridge",
+      "id": "southside",
       "label": "Southside",
-      "description": "A calmer neighborhood around the lower bridge, spillway, and older family homes.",
-      "center": {
-        "x": 36,
-        "y": 47
-      },
+      "description": "A calmer neighbourhood around the lower bridge, spillway, and older family homes.",
+      "center": { "x": 26, "y": 50 },
       "scale": 1.6
     },
     {
-      "id": "harbor",
+      "id": "waterfront",
       "label": "Waterfront",
       "description": "Warehouses, service yards, and the piers that keep the town supplied.",
-      "center": {
-        "x": 79,
-        "y": 51
-      },
+      "center": { "x": 74, "y": 44 },
       "scale": 1.55
     }
   ],
+
   "waterEllipses": [
     {
       "name": "North Marsh",
       "cx": 49,
       "cy": 4,
-      "rx": 20,
-      "ry": 5
-    },
-    {
-      "name": "East Basin",
-      "cx": 84,
-      "cy": 18,
-      "rx": 10,
-      "ry": 10
+      "rx": 18,
+      "ry": 4
     },
     {
       "name": "West Pond",
-      "cx": 16,
-      "cy": 20,
-      "rx": 10,
-      "ry": 7
+      "cx": 7,
+      "cy": 23,
+      "rx": 5,
+      "ry": 4
+    },
+    {
+      "name": "East Basin Upper",
+      "cx": 83,
+      "cy": 14,
+      "rx": 9,
+      "ry": 8
     },
     {
       "name": "Lower Lake",
-      "cx": 48,
-      "cy": 41,
-      "rx": 12,
-      "ry": 8
+      "cx": 47,
+      "cy": 42,
+      "rx": 10,
+      "ry": 7
     }
   ],
+
   "waterRects": [
     {
-      "name": "East Canal",
-      "x": 77,
-      "y": 4,
-      "width": 12,
-      "height": 28
+      "name": "East Canal North",
+      "x": 78,
+      "y": 0,
+      "width": 10,
+      "height": 22
     },
     {
-      "name": "South Channel",
-      "x": 85,
-      "y": 31,
-      "width": 8,
-      "height": 15
-    },
-    {
-      "name": "Spillway",
-      "x": 43,
-      "y": 45,
+      "name": "East Canal South",
+      "x": 86,
+      "y": 30,
       "width": 8,
       "height": 16
     },
     {
-      "name": "South Inlet",
-      "x": 53,
-      "y": 43,
-      "width": 43,
-      "height": 21
+      "name": "Spillway",
+      "x": 44,
+      "y": 46,
+      "width": 6,
+      "height": 18
+    },
+    {
+      "name": "South Inlet East",
+      "x": 56,
+      "y": 52,
+      "width": 40,
+      "height": 7
     }
   ],
+
   "walkwayRects": [
     {
-      "name": "Lower Bridge Opening",
-      "x": 46,
-      "y": 44,
-      "width": 6,
-      "height": 3
-    },
-    {
-      "name": "Canal Crossing",
-      "x": 73,
-      "y": 29,
+      "name": "Canal Crossing Bridge",
+      "x": 74,
+      "y": 28,
       "width": 8,
+      "height": 4
+    },
+    {
+      "name": "Lower Spillway Bridge",
+      "x": 44,
+      "y": 46,
+      "width": 6,
+      "height": 4
+    },
+    {
+      "name": "Central Road North-South",
+      "x": 40,
+      "y": 30,
+      "width": 4,
+      "height": 6
+    },
+    {
+      "name": "North-South Spine Road",
+      "x": 36,
+      "y": 6,
+      "width": 4,
+      "height": 52
+    },
+    {
+      "name": "East-West Civic Road",
+      "x": 2,
+      "y": 28,
+      "width": 76,
       "height": 3
     },
     {
-      "name": "Central Crossing",
-      "x": 41,
-      "y": 34,
-      "width": 4,
-      "height": 4
+      "name": "Northside Lane",
+      "x": 6,
+      "y": 8,
+      "width": 30,
+      "height": 3
+    },
+    {
+      "name": "Canal Row Access Road",
+      "x": 62,
+      "y": 8,
+      "width": 16,
+      "height": 3
+    },
+    {
+      "name": "Southside Lane",
+      "x": 4,
+      "y": 44,
+      "width": 34,
+      "height": 3
+    },
+    {
+      "name": "Waterfront Quay Road",
+      "x": 56,
+      "y": 42,
+      "width": 30,
+      "height": 3
+    },
+    {
+      "name": "Civic Plaza",
+      "x": 42,
+      "y": 18,
+      "width": 10,
+      "height": 8
     }
   ],
+
   "buildingRects": [
     {
       "name": "Northside House 01",
-      "x": 9,
-      "y": 10,
-      "width": 6,
-      "height": 5,
-      "district": "Northside Homes"
+      "x": 10,
+      "y": 9,
+      "width": 5,
+      "height": 3,
+      "district": "Northside Homes",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Northside House 02",
-      "x": 16,
+      "x": 17,
       "y": 9,
-      "width": 6,
-      "height": 5,
-      "district": "Northside Homes"
+      "width": 5,
+      "height": 3,
+      "district": "Northside Homes",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Northside House 03",
-      "x": 23,
-      "y": 10,
-      "width": 6,
-      "height": 5,
-      "district": "Northside Homes"
+      "x": 24,
+      "y": 9,
+      "width": 5,
+      "height": 3,
+      "district": "Northside Homes",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Northside House 04",
-      "x": 11,
-      "y": 17,
-      "width": 6,
-      "height": 5,
-      "district": "Northside Homes"
-    },
-    {
-      "name": "Civic Block 01",
-      "x": 30,
-      "y": 13,
-      "width": 8,
-      "height": 6,
-      "district": "Civic Center"
-    },
-    {
-      "name": "Civic Block 02",
-      "x": 40,
-      "y": 11,
-      "width": 11,
-      "height": 7,
-      "district": "Civic Center"
-    },
-    {
-      "name": "Civic Block 03",
-      "x": 53,
-      "y": 11,
-      "width": 7,
-      "height": 7,
-      "district": "Civic Center"
-    },
-    {
-      "name": "Civic Block 04",
-      "x": 32,
-      "y": 22,
-      "width": 8,
-      "height": 6,
-      "district": "Civic Center"
-    },
-    {
-      "name": "Civic Block 05",
-      "x": 41,
-      "y": 20,
-      "width": 10,
-      "height": 6,
-      "district": "Civic Center"
-    },
-    {
-      "name": "Civic Block 06",
-      "x": 55,
-      "y": 21,
-      "width": 8,
-      "height": 7,
-      "district": "Civic Center"
-    },
-    {
-      "name": "Civic Block 07",
-      "x": 63,
+      "x": 10,
       "y": 18,
-      "width": 7,
-      "height": 7,
-      "district": "Civic Center"
+      "width": 5,
+      "height": 3,
+      "district": "Northside Homes",
+      "type": "residence",
+      "entranceSide": "south"
     },
+    {
+      "name": "Northside House 05",
+      "x": 17,
+      "y": 18,
+      "width": 5,
+      "height": 3,
+      "district": "Northside Homes",
+      "type": "residence",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Northside House 06",
+      "x": 24,
+      "y": 18,
+      "width": 5,
+      "height": 3,
+      "district": "Northside Homes",
+      "type": "residence",
+      "entranceSide": "south"
+    },
+
+    {
+      "name": "Civic Hall",
+      "x": 30,
+      "y": 12,
+      "width": 6,
+      "height": 4,
+      "district": "Civic Center",
+      "type": "civic",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Cafe Row A",
+      "x": 43,
+      "y": 12,
+      "width": 4,
+      "height": 3,
+      "district": "Civic Center",
+      "type": "commercial",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Cafe Row B",
+      "x": 49,
+      "y": 12,
+      "width": 4,
+      "height": 3,
+      "district": "Civic Center",
+      "type": "commercial",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Cocktail Bar",
+      "x": 55,
+      "y": 12,
+      "width": 6,
+      "height": 4,
+      "district": "Civic Center",
+      "type": "commercial",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Civic Apartment Block A",
+      "x": 30,
+      "y": 20,
+      "width": 6,
+      "height": 4,
+      "district": "Civic Center",
+      "type": "residential-multi",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Civic Apartment Block B",
+      "x": 55,
+      "y": 20,
+      "width": 6,
+      "height": 4,
+      "district": "Civic Center",
+      "type": "residential-multi",
+      "entranceSide": "south"
+    },
+    {
+      "name": "Renovation Workshop",
+      "x": 63,
+      "y": 9,
+      "width": 6,
+      "height": 3,
+      "district": "Civic Center",
+      "type": "commercial",
+      "entranceSide": "south"
+    },
+
     {
       "name": "Canal Row Home 01",
-      "x": 76,
-      "y": 10,
-      "width": 6,
-      "height": 5,
-      "district": "Canal Row"
+      "x": 63,
+      "y": 9,
+      "width": 5,
+      "height": 3,
+      "district": "Canal Row",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Canal Row Home 02",
-      "x": 82,
-      "y": 12,
-      "width": 7,
-      "height": 6,
-      "district": "Canal Row"
+      "x": 70,
+      "y": 9,
+      "width": 5,
+      "height": 3,
+      "district": "Canal Row",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Canal Row Home 03",
-      "x": 76,
-      "y": 20,
-      "width": 6,
-      "height": 5,
-      "district": "Canal Row"
+      "x": 63,
+      "y": 16,
+      "width": 5,
+      "height": 3,
+      "district": "Canal Row",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Canal Row Home 04",
-      "x": 84,
+      "x": 70,
       "y": 21,
-      "width": 7,
-      "height": 6,
-      "district": "Canal Row"
+      "width": 5,
+      "height": 3,
+      "district": "Canal Row",
+      "type": "residence",
+      "entranceSide": "south"
     },
+
     {
       "name": "Southside Home 01",
-      "x": 10,
-      "y": 45,
-      "width": 7,
-      "height": 6,
-      "district": "Southside"
+      "x": 6,
+      "y": 47,
+      "width": 5,
+      "height": 3,
+      "district": "Southside",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Southside Home 02",
-      "x": 16,
-      "y": 49,
-      "width": 7,
-      "height": 6,
-      "district": "Southside"
+      "x": 13,
+      "y": 47,
+      "width": 5,
+      "height": 3,
+      "district": "Southside",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Southside Home 03",
-      "x": 6,
-      "y": 53,
-      "width": 7,
-      "height": 6,
-      "district": "Southside"
+      "x": 20,
+      "y": 47,
+      "width": 5,
+      "height": 3,
+      "district": "Southside",
+      "type": "residence",
+      "entranceSide": "south"
     },
     {
       "name": "Southside Home 04",
-      "x": 15,
-      "y": 57,
+      "x": 6,
+      "y": 55,
+      "width": 5,
+      "height": 3,
+      "district": "Southside",
+      "type": "residence",
+      "entranceSide": "north"
+    },
+    {
+      "name": "Southside Home 05",
+      "x": 13,
+      "y": 55,
+      "width": 5,
+      "height": 3,
+      "district": "Southside",
+      "type": "residence",
+      "entranceSide": "north"
+    },
+    {
+      "name": "Emergency Electrician Shop",
+      "x": 27,
+      "y": 47,
+      "width": 6,
+      "height": 4,
+      "district": "Southside",
+      "type": "commercial",
+      "entranceSide": "south"
+    },
+
+    {
+      "name": "Waterfront Warehouse A",
+      "x": 57,
+      "y": 47,
       "width": 7,
-      "height": 5,
-      "district": "Southside"
+      "height": 4,
+      "district": "Waterfront",
+      "type": "industrial",
+      "entranceSide": "north"
     },
     {
-      "name": "Waterfront Block 01",
-      "x": 69,
-      "y": 44,
-      "width": 10,
-      "height": 6,
-      "district": "Waterfront"
+      "name": "Waterfront Warehouse B",
+      "x": 66,
+      "y": 47,
+      "width": 7,
+      "height": 4,
+      "district": "Waterfront",
+      "type": "industrial",
+      "entranceSide": "north"
     },
     {
-      "name": "Waterfront Block 02",
-      "x": 80,
-      "y": 44,
-      "width": 9,
-      "height": 6,
-      "district": "Waterfront"
+      "name": "Waterfront Warehouse C",
+      "x": 75,
+      "y": 47,
+      "width": 7,
+      "height": 4,
+      "district": "Waterfront",
+      "type": "industrial",
+      "entranceSide": "north"
     },
     {
-      "name": "Waterfront Block 03",
-      "x": 69,
-      "y": 52,
-      "width": 10,
-      "height": 6,
-      "district": "Waterfront"
+      "name": "Dock Office",
+      "x": 57,
+      "y": 57,
+      "width": 5,
+      "height": 3,
+      "district": "Waterfront",
+      "type": "civic",
+      "entranceSide": "north"
     },
     {
-      "name": "Waterfront Block 04",
-      "x": 80,
-      "y": 52,
-      "width": 9,
-      "height": 6,
-      "district": "Waterfront"
+      "name": "Service Yard",
+      "x": 68,
+      "y": 57,
+      "width": 6,
+      "height": 3,
+      "district": "Waterfront",
+      "type": "industrial",
+      "entranceSide": "north"
     }
   ],
+
+  "socialSpots": [
+    {
+      "name": "Civic Plaza Bench Row",
+      "x": 43,
+      "y": 24,
+      "width": 10,
+      "height": 2,
+      "district": "Civic Center",
+      "type": "plaza"
+    },
+    {
+      "name": "Northside Park",
+      "x": 6,
+      "y": 13,
+      "width": 4,
+      "height": 4,
+      "district": "Northside Homes",
+      "type": "park"
+    },
+    {
+      "name": "Canal Row Dock Overlook",
+      "x": 74,
+      "y": 24,
+      "width": 4,
+      "height": 3,
+      "district": "Canal Row",
+      "type": "viewpoint"
+    },
+    {
+      "name": "Waterfront Pier",
+      "x": 83,
+      "y": 45,
+      "width": 10,
+      "height": 3,
+      "district": "Waterfront",
+      "type": "pier"
+    }
+  ],
+
   "manualCollisionRects": []
 }
